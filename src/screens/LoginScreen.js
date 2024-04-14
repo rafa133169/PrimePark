@@ -1,79 +1,53 @@
 import React from 'react';
-import { View, StyleSheet, Text, TextInput, Button, TouchableOpacity } from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
+import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
 
-const RegisterScreen = () => {
-  const [firstName, setFirstName] = React.useState('');
-  const [lastName, setLastName] = React.useState('');
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [confirmPassword, setConfirmPassword] = React.useState('');
-  const [agreeTerms, setAgreeTerms] = React.useState(false);
 
-  const handleRegister = () => {
-    // Aquí puedes agregar la lógica para registrar al usuario
-    console.log('Nombres:', firstName);
-    console.log('Apellidos:', lastName);
+  const handleLogin = () => {
+    // Aquí puedes agregar la lógica para manejar el inicio de sesión
     console.log('Correo:', email);
     console.log('Contraseña:', password);
-    console.log('Confirmar Contraseña:', confirmPassword);
-    console.log('Aceptar Términos y Condiciones:', agreeTerms);
+
+    // Navegar a HomeScreen
+    navigation.navigate('Home');
+  };
+
+  const navigateToRegister = () => {
+    navigation.navigate('Register');
   };
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require('../../assets/primepark.jpg')}
+        style={styles.logo}
+      />
       <View style={styles.formContainer}>
-      <Text style={styles.label}>Nombres</Text>
+        <View style={styles.labelContainer}>
+          <Text style={styles.label}>Correo</Text>
+        </View>
         <TextInput
-          placeholder="Diego"
-          value={firstName}
-          onChangeText={setFirstName}
-          style={styles.input}
-        />
-        <Text style={styles.label}>Apellidos</Text>
-        <TextInput
-          placeholder="Aleman Mena"
-          value={lastName}
-          onChangeText={setLastName}
-          style={styles.input}
-        />
-        <Text style={styles.label}>Correo</Text>
-        <TextInput
-          placeholder="diego@gmail.com"
           value={email}
           onChangeText={setEmail}
           style={styles.input}
         />
-        <Text style={styles.label}>Contraseña</Text>
+        <View style={styles.labelContainer}>
+          <Text style={styles.label}>Contraseña</Text>
+        </View>
         <TextInput
-          placeholder="********"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
           style={styles.input}
         />
-        <Text style={styles.label}>Confirmar contraseña</Text>
-        <TextInput
-          placeholder="********"
-          value={confirmPassword}
-          onChangeText={setConfirmPassword}
-          secureTextEntry
-          style={styles.input}
-        />
-        {/* <View style={styles.checkboxContainer}>
-          <CheckBox
-            value={agreeTerms}
-            onValueChange={setAgreeTerms}
-            style={styles.checkbox}
-          />
-          <Text style={styles.label}>Aceptar Términos y Condiciones</Text>
-        </View> */}
-        <TouchableOpacity style={styles.button} onPress={handleRegister}>
-  <Text style={styles.buttonText}>Registrar</Text>
-</TouchableOpacity>
-
-        <TouchableOpacity>
-          <Text style={styles.link}>Ya tienes una cuenta? Inicia sesión</Text>
+        <Button mode="contained" onPress={handleLogin} style={styles.button}>
+          Iniciar Sesión
+        </Button>
+        <TouchableOpacity onPress={navigateToRegister}>
+          <Text style={styles.registerText}>Registrate</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -83,12 +57,29 @@ const RegisterScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#656CEE',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+  },
+  logo: {
+    width: 200, // Ajusta el ancho de la imagen según sea necesario
+    height: 200, // Ajusta el alto de la imagen según sea necesario
+    resizeMode: 'contain', // Ajusta el modo de redimensionamiento de la imagen según sea necesario
+    marginBottom: 20, // Ajusta el margen inferior según sea necesario
   },
   formContainer: {
+    backgroundColor: '#FFFFFF',
+    padding: 20,
+    borderRadius: 10,
     width: '80%',
+  },
+  labelContainer: {
+    marginBottom: 5,
+  },
+  label: {
+    color: '#9695A8',
+    fontFamily: 'sans-serif',
+    fontSize: 12,
   },
   input: {
     marginVertical: 5,
@@ -97,38 +88,18 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     backgroundColor: 'white',
   },
-  checkboxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  checkbox: {
-    alignSelf: 'center',
-  },
-  label: {
-    color: '#9695A8',
-    fontFamily: 'sans-serif',
-    fontSize: 12,
-  },
   button: {
-    marginTop: 10,
+    marginVertical: 10,
     backgroundColor: '#656CEE',
-    paddingVertical: 12,
     borderRadius: 5,
-    alignItems: 'center',
   },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  
-  link: {
-    marginTop: 20,
-    color: 'blue',
-    textDecorationLine: 'underline',
+  registerText: {
+    marginTop: 20, // Ajusta el margen superior según sea necesario
     textAlign: 'center',
+    color: '#656CEE',
+    fontSize: 16, // Ajusta el tamaño del texto según sea necesario
+    textDecorationLine: 'none',
   },
 });
 
-export default RegisterScreen;
+export default LoginScreen;

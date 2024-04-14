@@ -68,7 +68,10 @@ const RegisterScreen = () => {
           />
           <Text style={styles.label}>Aceptar Términos y Condiciones</Text>
         </View> */}
-        <Button title="Registrar" onPress={handleRegister} style={styles.button} />
+        <TouchableOpacity style={styles.button} onPress={handleRegister}>
+  <Text style={styles.buttonText}>Registrar</Text>
+</TouchableOpacity>
+
         <TouchableOpacity>
           <Text style={styles.link}>Ya tienes una cuenta? Inicia sesión</Text>
         </TouchableOpacity>
@@ -93,6 +96,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#CCCCCC',
     paddingVertical: 2,
     backgroundColor: 'white',
+    marginBottom: 30,
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -108,10 +112,18 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   button: {
-    marginVertical: 10,
+    marginTop: 10,
     backgroundColor: '#656CEE',
+    paddingVertical: 12,
     borderRadius: 5,
+    alignItems: 'center',
   },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  
   link: {
     marginTop: 20,
     color: 'blue',
