@@ -1,29 +1,36 @@
-import React from 'react';
-import { View, StyleSheet, Text, TextInput, Button, TouchableOpacity } from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  Button,
+  TouchableOpacity,
+} from "react-native";
+import CheckBox from "@react-native-community/checkbox";
 
 const RegisterScreen = () => {
-  const [firstName, setFirstName] = React.useState('');
-  const [lastName, setLastName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [confirmPassword, setConfirmPassword] = React.useState('');
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState("");
   const [agreeTerms, setAgreeTerms] = React.useState(false);
 
   const handleRegister = () => {
     // Aquí puedes agregar la lógica para registrar al usuario
-    console.log('Nombres:', firstName);
-    console.log('Apellidos:', lastName);
-    console.log('Correo:', email);
-    console.log('Contraseña:', password);
-    console.log('Confirmar Contraseña:', confirmPassword);
-    console.log('Aceptar Términos y Condiciones:', agreeTerms);
+    console.log("Nombres:", firstName);
+    console.log("Apellidos:", lastName);
+    console.log("Correo:", email);
+    console.log("Contraseña:", password);
+    console.log("Confirmar Contraseña:", confirmPassword);
+    console.log("Aceptar Términos y Condiciones:", agreeTerms);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.formContainer}>
-      <Text style={styles.label}>Nombres</Text>
+        <Text style={styles.label}>Nombres</Text>
         <TextInput
           placeholder="Diego"
           value={firstName}
@@ -69,8 +76,8 @@ const RegisterScreen = () => {
           <Text style={styles.label}>Aceptar Términos y Condiciones</Text>
         </View> */}
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
-  <Text style={styles.buttonText}>Registrar</Text>
-</TouchableOpacity>
+          <Text style={styles.buttonText}>Registrar</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity>
           <Text style={styles.link}>Ya tienes una cuenta? Inicia sesión</Text>
@@ -83,52 +90,52 @@ const RegisterScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
   },
   formContainer: {
-    width: '80%',
+    width: "80%",
   },
   input: {
     marginVertical: 5,
     borderBottomWidth: 1,
-    borderBottomColor: '#CCCCCC',
+    borderBottomColor: "#CCCCCC",
     paddingVertical: 2,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     marginBottom: 30,
   },
   checkboxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 10,
   },
   checkbox: {
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   label: {
-    color: '#9695A8',
-    fontFamily: 'sans-serif',
+    color: "#9695A8",
+    fontFamily: "sans-serif",
     fontSize: 12,
   },
   button: {
     marginTop: 10,
-    backgroundColor: '#656CEE',
+    backgroundColor: "#656CEE",
     paddingVertical: 12,
     borderRadius: 5,
-    alignItems: 'center',
+    alignItems: "center",
   },
   buttonText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
-  
+
   link: {
     marginTop: 20,
-    color: 'blue',
-    textDecorationLine: 'underline',
-    textAlign: 'center',
+    color: "blue",
+    textDecorationLine: "underline",
+    textAlign: "center",
   },
 });
 

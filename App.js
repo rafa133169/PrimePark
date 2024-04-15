@@ -3,6 +3,7 @@ import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import MapScreen from './src/screens/MapScreen';
+import ResumenScreen from './src/screens/ResumenScreen';
 import { NavigationContainer } from '@react-navigation/native';
 
 
@@ -17,6 +18,7 @@ function App() {
   <Stack.Screen name="Register" component={RegisterScreen} />
   <Stack.Screen name="Home" component={HomeScreen} />
   <Stack.Screen name="Map" component={MapScreen} />
+  <Stack.Screen name="Resumen" component={ResumenScreen} />
 </Stack.Navigator>
 
     </NavigationContainer>
