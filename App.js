@@ -4,6 +4,7 @@ import RegisterScreen from './src/screens/RegisterScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import MapScreen from './src/screens/MapScreen';
 import ResumenScreen from './src/screens/ResumenScreen';
+import PagoScreen from './src/screens/PagoScreen';
 import { NavigationContainer } from '@react-navigation/native';
 
 
@@ -19,6 +20,7 @@ function App() {
   <Stack.Screen name="Home" component={HomeScreen} />
   <Stack.Screen name="Map" component={MapScreen} />
   <Stack.Screen name="Resumen" component={ResumenScreen} />
+  <Stack.Screen name="Pago" component={PagoScreen} />
 </Stack.Navigator>
 
     </NavigationContainer>
