@@ -55,7 +55,7 @@ const PagoScreen = () => {
             </View>
           </View>
           <View style={styles.bottomContainer}>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Resumen')}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Exitoso')}>
               <Text style={styles.buttonText}>Pagar</Text>
             </TouchableOpacity>
           </View>
