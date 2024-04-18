@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
+import { useNavigation } from "@react-navigation/native";
 
 const RegisterScreen = () => {
   const [firstName, setFirstName] = React.useState("");
@@ -16,6 +17,8 @@ const RegisterScreen = () => {
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [agreeTerms, setAgreeTerms] = React.useState(false);
+
+  const navigation = useNavigation();
 
   const handleRegister = () => {
     // Aquí puedes agregar la lógica para registrar al usuario
@@ -79,7 +82,7 @@ const RegisterScreen = () => {
           <Text style={styles.buttonText}>Registrar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text style={styles.link}>Ya tienes una cuenta? Inicia sesión</Text>
         </TouchableOpacity>
       </View>
@@ -134,7 +137,7 @@ const styles = StyleSheet.create({
   link: {
     marginTop: 20,
     color: "blue",
-    textDecorationLine: "underline",
+    textDecorationLine: "none",
     textAlign: "center",
   },
 });

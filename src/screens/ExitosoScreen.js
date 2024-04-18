@@ -10,10 +10,10 @@ const ExitosoScreen = () => {
       <View style={styles.imageContainer}>
         <Image source={require('../../assets/exitosoicon.png')} style={styles.image} />
       </View>
-      <Text style={styles.successText}>Listo ¡Tu pago fue exitoso!</Text>
+      <Text style={styles.successText}>¡Tu pago fue exitoso!</Text>
       <View style={styles.bottomContainer}>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Codigo')}>
-          <Text style={styles.buttonText}>Generar código</Text>
+          <Text style={styles.buttonText}>Listo</Text>
         </TouchableOpacity>
       </View>
     </View>

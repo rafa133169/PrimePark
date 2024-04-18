@@ -6,6 +6,10 @@ import MapScreen from './src/screens/MapScreen';
 import ResumenScreen from './src/screens/ResumenScreen';
 import PagoScreen from './src/screens/PagoScreen';
 import ExitosoScreen from './src/screens/ExitosoScreen';
+import CodigoScreen from './src/screens/CodigoScreen';
+import PlanScreen from './src/screens/PlanScreen';
+import TemporizadorScreen from './src/screens/TemporizadorScreen';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
@@ -27,6 +31,9 @@ function App() {
   <Stack.Screen name="Resumen" component={ResumenScreen} />
   <Stack.Screen name="Pago" component={PagoScreen} />
   <Stack.Screen name="Exitoso" component={ExitosoScreen} />
+  <Stack.Screen name="Codigo" component={CodigoScreen} />
+  <Stack.Screen name="Plan" component={PlanScreen} />
+  <Stack.Screen name="Temporizador" component={TemporizadorScreen} />
   <Stack.Screen name= "Main" component={Main} />
 </Stack.Navigator>
 

@@ -10,7 +10,7 @@ const HomeScreen = () => {
   const handlePress = () => {
     setIsPressed(!isPressed);
     // Navega a la pantalla de mapa cuando se presiona el card
-    navigation.navigate('Map');
+    navigation.navigate('Plan');
   };
 
   return (

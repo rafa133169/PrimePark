@@ -11,7 +11,9 @@ const carImages = [
   // Agrega más imágenes según sea necesario
 ];
 
-const MapScreen = () => {
+const MapScreen = ({ route }) => {
+  const { zona, precio } = route.params;
+
   const [selectedSpot, setSelectedSpot] = useState(null);
   const occupiedSpots = [
     { row: 0, col: 0, carIndex: 0 },
@@ -22,13 +24,12 @@ const MapScreen = () => {
   ];
 
   const handleSpotPress = (row, col) => {
-    if (!occupiedSpots.some(spot => spot.row === row && spot.col === col)) {
+    if (!occupiedSpots.some((spot) => spot.row === row && spot.col === col)) {
       setSelectedSpot({ row, col });
     }
   };
 
   const navigation = useNavigation();
-
 
   return (
     <View style={styles.container}>
@@ -38,9 +39,9 @@ const MapScreen = () => {
       <View style={styles.parkingLot}>
         <Text style={styles.entrance}>Entrada</Text>
         <Text style={styles.exit}>Salida</Text>
-        {Array.from({ length: 4 }, (_, row) => (
+        {Array.from({ length: 4 }, (_, row) =>
           Array.from({ length: 3 }, (_, col) => {
-            const occupiedSpot = occupiedSpots.find(spot => spot.row === row && spot.col === col);
+            const occupiedSpot = occupiedSpots.find((spot) => spot.row === row && spot.col === col);
             const isSelected = selectedSpot && selectedSpot.row === row && selectedSpot.col === col;
             return (
               <TouchableOpacity
@@ -51,6 +52,9 @@ const MapScreen = () => {
                     top: `${(row + 1) * 20}%`,
                     left: `${col * 33.33 + 1}%`,
                     backgroundColor: isSelected ? '' : 'transparent',
+                    ':hover': {
+                      backgroundColor: isSelected ? '' : '#f1f1f1',
+                    },
                   },
                 ]}
                 onPress={() => handleSpotPress(row, col)}
@@ -65,11 +69,15 @@ const MapScreen = () => {
               </TouchableOpacity>
             );
           })
-        ))}
+        )}
       </View>
       <View style={styles.bottomContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Resumen')}>
-          <Text style={styles.buttonText}>Seleccionar</Text>
+      <TouchableOpacity
+  style={[styles.button, { backgroundColor: selectedSpot ? '#656CEE' : '#B3B3B3' }]}
+  onPress={() => navigation.navigate('Resumen', { zona, precio, spot: selectedSpot })}
+  disabled={!selectedSpot}
+>
+          <Text style={styles.buttonText}>Confirmar</Text>
         </TouchableOpacity>
       </View>
     </View>

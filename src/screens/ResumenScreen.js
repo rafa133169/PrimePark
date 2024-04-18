@@ -3,7 +3,9 @@ import { View, StyleSheet, Text, _View, TouchableOpacity } from "react-native";
 import { IconButton, TextInput, useTheme, Card } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 
-const ResumenScreen = () => {
+const ResumenScreen = ({ route }) => {
+  const { zona, precio, spot } = route.params;
+
   const { colors } = useTheme();
   const fechaActual = new Date().toLocaleDateString();
   const horaActual = new Date().toLocaleTimeString([], {
@@ -51,7 +53,13 @@ const ResumenScreen = () => {
               Área seleccionada:{" "}
             </Text>
             <Text style={[styles.areaText, { color: colors.text }]}>
-              Area VIP
+            {zona}
+            </Text>
+          </View>
+          <View style={styles.areaContainer}>
+            <Text style={[styles.text, { color: colors.text }]}>Espacio seleccionado: </Text>
+            <Text style={[styles.areaText, { color: colors.text }]}>
+            {spot ? `A0${spot.row * 3 + spot.col + 1}` : 'Ninguno'}
             </Text>
           </View>
           <View style={styles.totalContainer}>
@@ -59,9 +67,7 @@ const ResumenScreen = () => {
               Total a pagar:
             </Text>
             <Card style={[styles.totalButton, { backgroundColor: "#FFBA82" }]}>
-              <Text style={[styles.totalText, { color: "white" }]}>
-                $150.00
-              </Text>
+            <Text style={[styles.totalText, { color: "white" }]}>{precio}</Text>
             </Card>
           </View>
         </Card.Content>
