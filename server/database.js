@@ -4,7 +4,7 @@ const connection = mysql.createConnection({
   host: "mysql-ricoline2.alwaysdata.net",
   user: "ricoline2",
   password: "1234561331",
-  database: "ricoline2_primePark",
+  database: "ricoline2_primepark",
 });
 
 connection.connect((error) => {

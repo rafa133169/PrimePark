@@ -3,8 +3,7 @@ import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native'; // Importa useNavigation desde react-navigation/native
 import axios from 'axios';
-import { getIPAddress } from 'react-native-network-info';
-
+import GetAddress from '../components/getAdress';
 
 
 
@@ -12,28 +11,13 @@ import { getIPAddress } from 'react-native-network-info';
 const HomeScreen = () => {
   const [isPressed, setIsPressed] = useState(false);
   const navigation = useNavigation(); // Obtiene el objeto de navegación
+  const [ipAddress, setIPAddress] = useState('');
+  const ip = GetAddress();
+  
 
-  useEffect(() => {
-    const fetchIPAddress = async () => {
-      try {
-        const ipAddress = await getIPAddress();
-        console.log('Dirección IP:', ipAddress);
-      } catch (error) {
-        console.error('Error al obtener la dirección IP:', error);
-      }
-    };
-
-    fetchIPAddress();
-  }, []);
-
-  const handlePress = () => {
-    setIsPressed(!isPressed);
-    // Navega a la pantalla de mapa cuando se presiona el card
-    navigation.navigate('Plan');
-  };
 
   const realizarPeticion = () => {
-    axios.get(`http://10.10.62.135:4001/arduino/`)
+    axios.get(`http://${ip}:4001/arduino/`)
   .then(response => {
     // Manejar los datos de la respuesta
     console.log(response.data);
@@ -41,6 +25,18 @@ const HomeScreen = () => {
   .catch(error => {
     // Manejar cualquier error
     console.error('Error al obtener datos:', error);
+  });
+  };
+
+  const abrirPrime = () => {
+    axios.put(`http://${ip}:4001/servo/abrir-caseta-prime`)
+  .then(response => {
+    // Manejar los datos de la respuesta
+    console.log(response.data);
+  })
+  .catch(error => {
+    // Manejar cualquier error
+    console.error('Error al abrir prime', error);
   });
   };
   return (
@@ -61,6 +57,23 @@ const HomeScreen = () => {
         >
           <Card.Content style={styles.cardContent}>
             <Text style={styles.cardText}>Elegir lugar</Text>
+            <Image
+              source={require('../../assets/parking.png')}
+              style={{ width: 100, height: 100 }}
+            />
+          </Card.Content>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={abrirPrime}
+          style={[
+            styles.card,
+            isPressed && { backgroundColor: '#FFBA82' },
+          ]}
+        >
+          <Card.Content style={styles.cardContent}>
+            <Text style={styles.cardText}>AbrirPrime</Text>
             <Image
               source={require('../../assets/parking.png')}
               style={{ width: 100, height: 100 }}

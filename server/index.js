@@ -3,10 +3,7 @@ const cors = require("cors");
 
 
 const arduinoRouter = require("./Router/arduinoRouter");
-
-
-
-
+const servoRouter = require("./Router/servoRouter");
 
 const app = express();
 
@@ -16,6 +13,8 @@ app.use(express.json());
 
 // Ruta al Router
 app.use("/arduino", arduinoRouter); 
+app.use("/caseta", servoRouter); 
+
 
 
 
