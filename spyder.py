@@ -38,12 +38,12 @@ try:
             if estado_actual == 1:
                 # Enviar la respuesta al Arduino a través del puerto serial
                 nuevo_estado = str(estado_actual).encode()
-                arduino.write(b's1')
+                arduino.write(b'premium')
                 cursor.execute("UPDATE servo SET estatus = 0 WHERE id_servo = 1")
                 db.commit()
             elif estado_actual == 2:
                 nuevo_estado = str(estado_actual).encode()
-                arduino.write(b's2')
+                arduino.write(b'estandar')
                 cursor.execute("UPDATE servo SET estatus = 0 WHERE id_servo = 1")  
                 db.commit()
                 

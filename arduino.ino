@@ -40,11 +40,11 @@ void loop() {
     String mensaje = Serial.readStringUntil('\n');
 
   if(mensaje.length()>0){
-    if (mensaje == 's1') {
+    if (mensaje == "premium") {
       myServo.write(servoPosOpen);
       delay(3500);
       myServo.write(servoPosClosed);
-    } else if (mensaje == 's2') {
+    } else if (mensaje == "estandar") {
       myServo2.write(servoPosOpen);
       delay(3500);
       myServo2.write(servoPosClosed);
