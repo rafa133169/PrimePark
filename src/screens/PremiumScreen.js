@@ -69,7 +69,7 @@ const PremiumScreen = ({ route }) => {
         <View style={styles.bottomContainer}>
           <TouchableOpacity
             style={[styles.button, { backgroundColor: selectedSpot ? '#656CEE' : '#B3B3B3' }]}
-            onPress={() => navigation.navigate('Resumen', { zona, precio, spot: selectedSpot })}
+            onPress={() => navigation.navigate('ResumenPremium', { zona, precio, spot: selectedSpot })}
             disabled={!selectedSpot}
           >
             <Text style={styles.buttonText}>Confirmar</Text>
