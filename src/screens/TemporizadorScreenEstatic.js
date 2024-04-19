@@ -1,10 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Animated, Easing, Button, Image } from 'react-native';
+import GetAddress from '../components/getAdress';
+import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 const TemporizadorScreen = () => {
   const [segundos, setSegundos] = useState(0);
   const [temporizadorActivo, setTemporizadorActivo] = useState(false);
   const progress = new Animated.Value(0);
+  const ip = GetAddress();
+  const [data, setData] = useState(null);
+  const [isPressed, setIsPressed] = useState(false);
+  const navigation = useNavigation();
+
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://${ip}:4001/caseta/info-caseta-estandar`);
+        setData(response.data);
+        if(response.data.estatus === "ocupado"){
+          setTemporizadorActivo(true);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData(); 
+    const intervalId = setInterval(fetchData, 1000);
+
+    // Limpiamos el intervalo cuando el componente se desmonta
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     let temporizador = null;
@@ -20,7 +51,23 @@ const TemporizadorScreen = () => {
   }, [temporizadorActivo, segundos]);
 
   const handleMarcarSalida = () => {
-    setTemporizadorActivo(false); // Detiene el temporizador sin reiniciar
+    setTemporizadorActivo(false);
+    axios.put(`http://${ip}:4001/caseta/salir-caseta-estandar`)
+  .then(response => {
+    // Manejar los datos de la respuesta
+    console.log(response.data);
+  })
+  .catch(error => {
+    // Manejar cualquier error
+    
+    console.error('Error al salir de estandar', error);
+  }); // Detiene el temporizador sin reiniciar
+  };
+
+  const handleNavigate = () => {
+    setIsPressed(!isPressed);
+    // Navega a la pantalla de mapa cuando se presiona el card
+    navigation.navigate('Home');
   };
 
   return (
@@ -45,8 +92,11 @@ const TemporizadorScreen = () => {
       </Animated.View>
       <Button
   title="Marcar Salida"
-  onPress={handleMarcarSalida}
-  disabled={!temporizadorActivo || segundos === 0}
+  onPress={() => {
+    handleMarcarSalida();
+    handleNavigate();
+  }}
+    disabled={!temporizadorActivo || segundos === 0}
   color="#656CEE" // Cambia el color del texto del botón
   style={{ width: 300, marginBottom: 20, borderRadius: 50  }} // Ajusta la longitud y el margen inferior del botón
 />

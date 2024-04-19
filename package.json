@@ -27,7 +27,8 @@
     "react-native-maps": "^1.14.0",
     "react-native-network-info": "^5.2.1",
     "react-native-paper": "^5.12.3",
-    "react-native-svg": "^15.1.0"
+    "react-native-svg": "^15.1.0",
+    "react-navigation": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

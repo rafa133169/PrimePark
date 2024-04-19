@@ -14,27 +14,30 @@ const abrirPrime = (req, res) => {
   };
   
   const salirPremium = (req, res) => {
-
-    connection.query("UPDATE servo set estatus = 1 where id_servo = 1", 
-    (error, results) => {
+    connection.query(
+      "UPDATE servo SET estatus = 1 WHERE id_servo = 1",
+      (error, servoResults) => {
         if (error) {
           console.error("Error al actualizar Info del servo Prime", error);
-          res.status(500).json({ error: "Error al actualizar Info del servo Prime" });
+          return res.status(500).json({ error: "Error al actualizar Info del servo Prime" });
         } else {
-          res.json({ message: "Info del servo Prime actualizada correctamente" });
+          connection.query(
+            "UPDATE infrarojos SET estatus = 'vacio' WHERE id_infrarojo = 1",
+            (error, infrarojosResults) => {
+              if (error) {
+                console.error("Error al actualizar Info del servo Prime", error);
+                return res.status(500).json({ error: "Error al actualizar Info del servo Prime" });
+              } else {
+                // Ambas consultas se completaron correctamente, enviar la respuesta
+                return res.json({ message: "Información actualizada correctamente" });
+              }
+            }
+          );
         }
-      });
-
-      connection.query("UPDATE infrarojos set estatus = 'vacio' where id_infrarojo = 1", 
-    (error, results) => {
-        if (error) {
-          console.error("Error al actualizar Info del servo Prime", error);
-          res.status(500).json({ error: "Error al actualizar Info del servo Prime" });
-        } else {
-          res.json({ message: "Info del servo Prime actualizada correctamente" });
-        }
-      });
+      }
+    );
   };
+  
 
 
   const abrirStandar = (req, res) => {
@@ -50,27 +53,30 @@ const abrirPrime = (req, res) => {
       });
   };
   const salirStandar = (req, res) => {
-
-    connection.query("UPDATE servo set estatus = 2 where id_servo = 1", 
-    (error, results) => {
+    connection.query(
+      "UPDATE servo SET estatus = 2 WHERE id_servo = 1",
+      (error, servoResults) => {
         if (error) {
           console.error("Error al actualizar Info del servo Prime", error);
-          res.status(500).json({ error: "Error al actualizar Info del servo Prime" });
+          return res.status(500).json({ error: "Error al actualizar Info del servo Prime" });
         } else {
-          res.json({ message: "Info del servo Prime actualizada correctamente" });
+          connection.query(
+            "UPDATE infrarojos SET estatus = 'vacio' WHERE id_infrarojo = 2",
+            (error, infrarojosResults) => {
+              if (error) {
+                console.error("Error al actualizar Info del servo Prime", error);
+                return res.status(500).json({ error: "Error al actualizar Info del servo Prime" });
+              } else {
+                // Ambas consultas se completaron correctamente, enviar la respuesta
+                return res.json({ message: "Información actualizada correctamente" });
+              }
+            }
+          );
         }
-      });
-
-      connection.query("UPDATE infrarojos set estatus = 'vacio' where id_infrarojo = 2", 
-    (error, results) => {
-        if (error) {
-          console.error("Error al actualizar Info del servo Prime", error);
-          res.status(500).json({ error: "Error al actualizar Info del servo Prime" });
-        } else {
-          res.json({ message: "Info del servo Prime actualizada correctamente" });
-        }
-      });
+      }
+    );
   };
+  
 
   const obtenerSensorPrime = (req, res) => {
   

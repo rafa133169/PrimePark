@@ -14,7 +14,7 @@ const CodigoScreenEstandar = () => {
 
   const handlePress = () => {
     setIsPressed(!isPressed);
-    axios.put(`http://${ip}:4001/caseta/abrir-caseta-prime`)
+    axios.put(`http://${ip}:4001/caseta/abrir-caseta-estandar`)
   .then(response => {
     // Manejar los datos de la respuesta
     console.log(response.data);
