@@ -15,6 +15,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Main from './src/components/Main';
+import GetAddress from './src/components/getAdress';
 // import ParkingMap from './src/components/ParkingMap';
 
 
@@ -38,6 +39,8 @@ function App() {
   <Stack.Screen name="Plan" component={PlanScreen} />
   <Stack.Screen name="Temporizador" component={TemporizadorScreen} />
   <Stack.Screen name= "Main" component={Main} />
+  <Stack.Screen name= "GetAddress" component={GetAddress} />
+
 </Stack.Navigator>
 
     </NavigationContainer>
