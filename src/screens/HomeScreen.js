@@ -2,10 +2,29 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native'; // Importa useNavigation desde react-navigation/native
+import axios from 'axios';
+import { getIPAddress } from 'react-native-network-info';
+
+
+
+
 
 const HomeScreen = () => {
   const [isPressed, setIsPressed] = useState(false);
   const navigation = useNavigation(); // Obtiene el objeto de navegación
+
+  useEffect(() => {
+    const fetchIPAddress = async () => {
+      try {
+        const ipAddress = await getIPAddress();
+        console.log('Dirección IP:', ipAddress);
+      } catch (error) {
+        console.error('Error al obtener la dirección IP:', error);
+      }
+    };
+
+    fetchIPAddress();
+  }, []);
 
   const handlePress = () => {
     setIsPressed(!isPressed);
@@ -13,6 +32,17 @@ const HomeScreen = () => {
     navigation.navigate('Plan');
   };
 
+  const realizarPeticion = () => {
+    axios.get(`http://10.10.62.135:4001/arduino/`)
+  .then(response => {
+    // Manejar los datos de la respuesta
+    console.log(response.data);
+  })
+  .catch(error => {
+    // Manejar cualquier error
+    console.error('Error al obtener datos:', error);
+  });
+  };
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
@@ -23,7 +53,7 @@ const HomeScreen = () => {
         <Text style={styles.reserveText}>Reservar estacionamiento</Text>
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={handlePress}
+          onPress={realizarPeticion}
           style={[
             styles.card,
             isPressed && { backgroundColor: '#FFBA82' },
