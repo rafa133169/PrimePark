@@ -23,7 +23,7 @@ const CodigoScreenEstandar = () => {
   .catch(error => {
     // Manejar cualquier error
     
-    console.error('Error al abrir prime', error);
+    console.error('Error al abrir estandar', error);
   });
 
   };
@@ -31,7 +31,7 @@ const CodigoScreenEstandar = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.roundButton} onPress={handlePress}>
-        <Text style={styles.buttonText}>Levantar Pluma</Text>
+        <Text style={styles.buttonText}>Abrir Caseta</Text>
       </TouchableOpacity>
     </View>
   );

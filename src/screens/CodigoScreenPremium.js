@@ -18,13 +18,14 @@ const CodigoScreenPremium = () => {
   .then(response => {
     // Manejar los datos de la respuesta
     console.log(response.data);
+    navigation.navigate('TemporizadorEstaticPremium');
+
   })
   .catch(error => {
     // Manejar cualquier error
     
     console.error('Error al abrir prime', error);
   });
-  navigation.navigate('TemporizadorEstaticPremium');
 
   
   };
@@ -32,7 +33,7 @@ const CodigoScreenPremium = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.roundButton} onPress={handlePress}>
-        <Text style={styles.buttonText}>Levantar Pluma</Text>
+        <Text style={styles.buttonText}>Abrir Caseta</Text>
       </TouchableOpacity>
     </View>
   );
