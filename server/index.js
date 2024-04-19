@@ -15,9 +15,6 @@ app.use(express.json());
 app.use("/arduino", arduinoRouter); 
 app.use("/caseta", servoRouter); 
 
-
-
-
 app.listen(4001, () => {
   console.log("API escuchando por el puerto 4001");
 });

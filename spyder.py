@@ -32,18 +32,18 @@ try:
         db.commit()
 
         if resultado:  # Verificar si se obtuvo un resultado
-            estado_actual = resultado[0]  # Obtener el estado actual desde el resultado de la consulta
+            estado_actual = resultado[0]
             print(f"estatus {estado_actual}")
             # Comparar el estado actual con el valor obtenido del Arduino
-            if estado_actual == 1:
+            if estado_actual == 2:
                 # Enviar la respuesta al Arduino a través del puerto serial
                 nuevo_estado = str(estado_actual).encode()
                 arduino.write(b'premium')
                 cursor.execute("UPDATE servo SET estatus = 0 WHERE id_servo = 1")
                 db.commit()
-            elif estado_actual == 2:
+            elif estado_actual == 1:
                 nuevo_estado = str(estado_actual).encode()
-                arduino.write(b'estandar')
+                arduino.write(b'')
                 cursor.execute("UPDATE servo SET estatus = 0 WHERE id_servo = 1")  
                 db.commit()
                 
