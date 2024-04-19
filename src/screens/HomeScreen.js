@@ -29,7 +29,7 @@ const HomeScreen = () => {
   };
 
   const abrirPrime = () => {
-    axios.put(`http://${ip}:4001/servo/abrir-caseta-prime`)
+    axios.put(`http://${ip}:4001/caseta/abrir-caseta-prime`)
   .then(response => {
     // Manejar los datos de la respuesta
     console.log(response.data);
