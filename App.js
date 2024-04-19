@@ -16,6 +16,11 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Main from './src/components/Main';
 import GetAddress from './src/components/getAdress';
+import ResumenEstandar from './src/screens/ResumenEstandar';
+import PagoScreenEstandar from './src/screens/PagoScreenEstandar';
+import ExitosoEstandarScreen from './src/screens/ExitosoEstandarScreen';
+import CodigoScreenEstandar from './src/screens/CodigoScreenEstandar';
+import TemporizadorScreenEstatic from './src/screens/TemporizadorScreenEstatic';
 // import ParkingMap from './src/components/ParkingMap';
 
 
@@ -34,12 +39,19 @@ function App() {
   <Stack.Screen name="Premium" component={PremiumScreen} />
   <Stack.Screen name="Resumen" component={ResumenScreen} />
   <Stack.Screen name="Pago" component={PagoScreen} />
+  <Stack.Screen name="PagoEstandar" component={PagoScreenEstandar} />
   <Stack.Screen name="Exitoso" component={ExitosoScreen} />
   <Stack.Screen name="Codigo" component={CodigoScreen} />
   <Stack.Screen name="Plan" component={PlanScreen} />
   <Stack.Screen name="Temporizador" component={TemporizadorScreen} />
   <Stack.Screen name= "Main" component={Main} />
   <Stack.Screen name= "GetAddress" component={GetAddress} />
+  <Stack.Screen name= "ResumenEstandar" component={ResumenEstandar} />
+  <Stack.Screen name= "ExitoEstandar" component={ExitosoEstandarScreen} />
+  <Stack.Screen name= "AbrirPlumaEs" component={CodigoScreenEstandar} />
+  <Stack.Screen name= "TemporizadorEstatic" component={TemporizadorScreenEstatic} />
+
+  
 
 </Stack.Navigator>
 
