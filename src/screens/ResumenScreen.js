@@ -78,12 +78,13 @@ const ResumenScreen = ({ route }) => {
       <Card style={styles.card}>
         <Card.Content>
           {/* Botones de opciones de pago */}
-          <TouchableOpacity
-            style={styles.paymentButton}
-            onPress={() => navigation.navigate("Pago")}
-          >
-            <Text style={styles.paymentButtonText}>Tarjeta</Text>
-          </TouchableOpacity>
+         <TouchableOpacity
+  style={styles.paymentButton}
+  onPress={() => navigation.navigate("Pago", { precio })}
+>
+  <Text style={styles.paymentButtonText}>Tarjeta</Text>
+</TouchableOpacity>
+
 
           <TouchableOpacity
             style={styles.paymentButton}
@@ -120,7 +121,6 @@ const styles = StyleSheet.create({
   },
   textInput: {
     flex: 1,
-    marginLeft: 10,
     backgroundColor: "transparent",
   },
   text: {
