@@ -10,7 +10,7 @@ const CodigoScreen = () => {
     let result = '';
     const characters = '0123456789ABCD';
     const charactersLength = characters.length;
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 4; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
@@ -57,11 +57,13 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 5,
+    width: 300,
   },
   buttonText: {
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 
