@@ -39,13 +39,6 @@ const HomeScreen = () => {
     console.error('Error al abrir prime', error);
   });
   };
-
-  const handlePress = () => {
-    setIsPressed(!isPressed);
-    // Navega a la pantalla de mapa cuando se presiona el card
-    navigation.navigate('Plan');
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
@@ -56,11 +49,10 @@ const HomeScreen = () => {
         <Text style={styles.reserveText}>Reservar estacionamiento</Text>
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={handlePress}
+          onPress={realizarPeticion}
           style={[
             styles.card,
             isPressed && { backgroundColor: '#FFBA82' },
-            
           ]}
         >
           <Card.Content style={styles.cardContent}>
@@ -72,7 +64,22 @@ const HomeScreen = () => {
           </Card.Content>
         </TouchableOpacity>
 
-        
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={abrirPrime}
+          style={[
+            styles.card,
+            isPressed && { backgroundColor: '#FFBA82' },
+          ]}
+        >
+          <Card.Content style={styles.cardContent}>
+            <Text style={styles.cardText}>AbrirPrime</Text>
+            <Image
+              source={require('../../assets/parking.png')}
+              style={{ width: 100, height: 100 }}
+            />
+          </Card.Content>
+        </TouchableOpacity>
       </View>
     </View>
   );
