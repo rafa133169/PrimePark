@@ -18,7 +18,7 @@ const PlanScreen = () => {
           <Image source={require('../../assets/star.png')} style={styles.image} />
         </Card.Content>
       </Card>
-      <Card style={styles.card} onPress={() => navigation.navigate('Map', { zona: 'Zona Estándar', precio: "$20.00" })}>
+      <Card style={styles.card} onPress={() => navigation.navigate('Estandar', { zona: 'Zona Estándar', precio: "$20.00" })}>
         <Card.Content style={styles.cardContent}>
           <View style={styles.textContainer}>
             <Text style={styles.buttonText}>Zona Estándar</Text>
@@ -27,7 +27,7 @@ const PlanScreen = () => {
           <Image source={require('../../assets/check.png')} style={styles.image} />
         </Card.Content>
       </Card>
-      <Card style={styles.card} onPress={() => navigation.navigate('Map', { zona: 'Zona Premium', precio: "$30.00" })}>
+      <Card style={styles.card} onPress={() => navigation.navigate('Premium', { zona: 'Zona Premium', precio: "$30.00" })}>
         <Card.Content style={styles.cardContent}>
           <View style={styles.textContainer}>
             <Text style={styles.buttonText}>Zona Premium</Text>

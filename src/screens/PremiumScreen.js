@@ -11,14 +11,14 @@ const carImages = [
   // Agrega más imágenes según sea necesario
 ];
 
-const MapScreen = ({ route }) => {
+const PremiumScreen = ({ route }) => {
     const { zona, precio } = route.params;
   
     const [selectedSpot, setSelectedSpot] = useState(null);
     const occupiedSpots = [
-      { row: 0, col: 0, carIndex: 1 },
-      { row: 1, col: 0, carIndex: 1 },
+      { row: 1, col: 0, carIndex: 3 },
       { row: 1, col: 1, carIndex: 2 },
+      { row: 0, col: 1, carIndex: 1 },
       // Agrega más posiciones de coches ocupados según sea necesario
     ];
   
@@ -161,4 +161,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MapScreen;
+export default PremiumScreen;

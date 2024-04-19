@@ -5,7 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import { Platform } from 'react-native';
 
 
-const PagoScreen = () => {
+const PagoScreen = ({ route }) => {
+  const { precio } = route.params;
 
   const navigation = useNavigation();
 
@@ -24,7 +25,7 @@ const PagoScreen = () => {
           <View style={styles.totalContainer}>
             <Text style={[styles.totalLabel, { color: 'green', marginLeft: 20 }]}>Total a pagar:</Text>
             <Card style={[styles.totalButton, { backgroundColor: '#FFBA82' }]}>
-              <Text style={[styles.totalText, { color: 'white' }]}>$150.00</Text>
+              <Text style={[styles.totalText, { color: 'white' }]}>{precio}</Text>
             </Card>
           </View>
           <View style={styles.imageContainer}>
