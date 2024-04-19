@@ -14,18 +14,18 @@ const CodigoScreenEstandar = () => {
 
   const handlePress = () => {
     setIsPressed(!isPressed);
-    axios.put(`http://${ip}:4001/servo/abrir-caseta-prime`)
+    axios.put(`http://${ip}:4001/caseta/abrir-caseta-prime`)
   .then(response => {
     // Manejar los datos de la respuesta
     console.log(response.data);
-    
+    navigation.navigate('TemporizadorEstatic');
   })
   .catch(error => {
     // Manejar cualquier error
     
     console.error('Error al abrir prime', error);
   });
-  navigation.navigate('TemporizadorEstatic');
+
   };
 
   return (

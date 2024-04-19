@@ -72,9 +72,36 @@ const abrirPrime = (req, res) => {
       });
   };
 
+  const obtenerSensorPrime = (req, res) => {
+  
+    connection.query("SELECT estatus FROM infrarojos WHERE id_infrarojo = 1", (error, results) => {
+      if (error) {
+        res.status(500).json({ error: "Ocurrió un error al obtener informacion por ID" });
+      } else if (results.length === 0) {
+        res.status(404).json({ error: "La informacion no fue encontrada por ID" });
+      } else {
+        res.json(results[0]);
+      }
+    });
+  };
+  const obtenerSensorEstandar = (req, res) => {
+  
+    connection.query("SELECT estatus FROM infrarojos WHERE id_infrarojo = 2", (error, results) => {
+      if (error) {
+        res.status(500).json({ error: "Ocurrió un error al obtener informacion por ID" });
+      } else if (results.length === 0) {
+        res.status(404).json({ error: "La informacion no fue encontrada por ID" });
+      } else {
+        res.json(results[0]);
+      }
+    });
+  };
+
   module.exports = {
     abrirPrime,
     abrirStandar,
     salirStandar,
     salirPremium,
+    obtenerSensorPrime,
+    obtenerSensorEstandar,
   };
